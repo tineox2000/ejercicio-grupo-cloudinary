@@ -10,6 +10,46 @@ const getAllPlayers = async (req, res, next) =>{
     }
 }
 
+const getPlayersByYear = async (req, res, next) => {
+    try {
+        const { age } = req.params;
+        const players = await Player.find({age: {$gte: age}});
+        if (players.length) {
+            return res.status(200).json(players);
+        } else {
+            return res.status(404).json('Player not found with this age');
+        }
+    } catch (error) {
+        return next(error);
+    }
+};
+// const getPlayer = async (req, res, next) =>{
+//     try {
+//         const id = req.params.id;
+//         const player = await Player.findById(id);
+//         if (player) {
+//             return res.status(200).json(player);
+//         }else{
+//             return res.status(404).json('jugador no encontrado');
+//         }
+//     } catch (error) {
+//         return res.status(500).json(error);
+//     }
+// }
+
+// const getPlayersAge = ("player.models/:playerSchema/:age", (req, res) => {
+  
+//     const { playerSchema } = req.params;
+  
+//     const found = player.models.find((player) => player.toLowerCase() === playerSchema.toLowerCase());
+  
+//     if (found) {
+//       return res.send("Jugador encontrado, aquí lo tienes: ${found}");
+//     } else {
+//       return res.send("No tenemos el jugador que buscas. ${playerSchema} no está en nuestra colección");
+//     }
+//   });
+
 const postPlayer = async (req, res, next) =>{
     try {
         const player = await new Player(req.body);
@@ -60,4 +100,4 @@ const deletePlayer = async (req, res, next) =>{
     }
 }
 
-module.exports = {getAllPlayers, postPlayer, putPlayer, deletePlayer};
+module.exports = {getAllPlayers, getPlayersByYear, postPlayer, putPlayer, deletePlayer};
