@@ -6,9 +6,9 @@ const playersRoutes = express.Router();
 
 playersRoutes.get('/', getAllPlayers);
 playersRoutes.get('/year/:age', getPlayersByYear);
-playersRoutes.post('/', upload.single('photo'), postPlayer);
-playersRoutes.put('/:id', upload.single('photo'), putPlayer);
-playersRoutes.delete('/:id', deletePlayer);
+playersRoutes.post('/new', upload.single('photo'), postPlayer);
+playersRoutes.put('/edit/:id', upload.single('photo'), putPlayer);
+playersRoutes.delete('/delete/:id', deletePlayer);
 
 
 module.exports = playersRoutes;

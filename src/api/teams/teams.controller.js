@@ -12,7 +12,7 @@ const getAllTeams = async (req, res, next) => {
 const getTeam = async (req, res, next) => {
     try {
         const {id} = req.params;
-        const teams = await Team.findById(id).populate('players');
+        const teams = await Team.findById(id).populate('player');
         return res.status(200).json(teams);
     } catch (error) {
         return res.status(500).json(error);

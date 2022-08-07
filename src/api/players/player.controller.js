@@ -52,7 +52,7 @@ const getPlayersByYear = async (req, res, next) => {
 
 const postPlayer = async (req, res, next) =>{
     try {
-        const player = await new Player(req.body);
+        const player = new Player(req.body);
 
         //Vamos a recoger la imagen del formulario
         if(req.file){

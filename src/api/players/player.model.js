@@ -6,7 +6,7 @@ const playerSchema = new Schema({
     team: {type: String, required: true},
     dorsal: {type: Number, required: true},
     age: {type: Number, required: true},
-    photo: {type: 'string'},
+    photo: {type: String},
 },{
     timestamps: true
 });
