@@ -2,7 +2,7 @@ const Team = require('./teams.model');
 
 const getAllTeams = async (req, res, next) => {
     try {
-        const teams = await Team.find();
+        const teams = await Team.find().populate('players');
         return res.status(200).json(teams);
     } catch (error) {
         return res.status(500).json(error);

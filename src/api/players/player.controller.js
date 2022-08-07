@@ -1,4 +1,4 @@
-// const { deleteFile } = require('../../utils/middlewares/deleteFile.middleware');
+const { deleteFile } = require('../../utils/middlewares/deleteFile.middleware');
 const Player = require('./player.model');
 
 const getAllPlayers = async (req, res, next) =>{
